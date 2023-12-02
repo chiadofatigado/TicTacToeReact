@@ -8,7 +8,16 @@ function Square({ value, onSquareClick }) {
   );
 }
 
-function Board({ xIsNext, squares, onPlay }) {
+// Restarts the game
+function Restart({ onRestart }) {
+  return (
+    <button className="restart" onClick={onRestart}>
+      Restart
+    </button>
+  );
+}
+
+function Board({ xIsNext, squares, onPlay, onRestart }) {
   
   // This function is called when a square is clicked
   function handleClick(i) {
@@ -71,6 +80,7 @@ function Board({ xIsNext, squares, onPlay }) {
   return (
     <>
       <div className="status">{status}</div>
+      <Restart onRestart={onRestart} />
       {renderBoard()}
     </>
   );
@@ -95,6 +105,11 @@ export default function Game() {
     setCurrentMove(nextMove);
   }
 
+  function restart() {
+    setHistory([Array(9).fill(null)]);
+    setCurrentMove(0);
+  }
+
   const moves = history.map((squares, move) => {
     const description = move ? "Go to move #" + move : "Go to game start";
     return (
@@ -108,7 +123,7 @@ export default function Game() {
   return (
     <div className="game">
       <div className="game-board">
-        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
+        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} onRestart={restart} />
       </div>
       <div className="game-info">
         <ol>{ moves }</ol>
