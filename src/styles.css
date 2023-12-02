@@ -103,3 +103,7 @@ button:hover {
 .game-info button:hover {
   background-color: #ede0c8;
 }
+
+button.square {
+  color: #776e65;
+}

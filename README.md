@@ -1,4 +1,5 @@
 # Tic Tac Toe game implementation in React
+![Preview](public/preview.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
