@@ -1,0 +1,105 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #faf8ef;
+  color: #776e65;
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  min-height: 100vh; /* Full height viewport */
+  margin: 0;
+  padding: 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #776e65;
+}
+
+code {
+  font-size: 1.2em;
+  background-color: #eee4da;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+.game {
+  display: flex;
+  flex-direction: column; /* Changed to column for better centering */
+  align-items: center; /* Center the board */
+}
+
+.board-row {
+  display: flex; /* Use flexbox for rows */
+  justify-content: center;
+}
+
+.square {
+  background: #eee4da;
+  border: 2px solid #bbada0;
+  font-size: 48px; /* Larger font size for X and O */
+  font-weight: bold;
+  display: flex; /* Flexbox for centering content */
+  align-items: center; /* Vertically center */
+  justify-content: center; /* Horizontally center */
+  height: 120px; /* Increased size */
+  width: 120px; /* Increased size */
+  margin: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.square:hover {
+  background-color: #ede0c8;
+}
+
+.status {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.game-info {
+  margin-left: 20px;
+  padding: 10px;
+  background-color: #f8f5f0;
+  border-radius: 5px;
+}
+/* Button styling */
+button {
+  background-color: #8f7a66; /* Warm brown color */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #b2a29b; /* Lighter shade for hover effect */
+}
+
+/* Additional styling for specific buttons if necessary */
+.game-info button {
+  background-color: #eee4da; /* Lighter color for game info buttons */
+  color: #776e65;
+}
+
+.game-info button:hover {
+  background-color: #ede0c8;
+}
