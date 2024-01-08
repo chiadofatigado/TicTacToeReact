@@ -77,7 +77,7 @@ ul {
 /* Button styling */
 button {
   background-color: #8f7a66; /* Warm brown color */
-  color: white;
+  color: rgb(58, 58, 58);
   border: none;
   padding: 10px 15px;
   text-align: center;

@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+// Renders a single square
 function Square({ value, onSquareClick }) {
   return (
     <button className="square" onClick={onSquareClick}>
@@ -17,8 +18,18 @@ function Restart({ onRestart }) {
   );
 }
 
-function Board({ xIsNext, squares, onPlay, onRestart }) {
-  
+// Revert to previous move
+function Revert({ onRevert }) {
+  return (
+    <button className="revert" onClick={onRevert}>
+      Revert
+    </button>
+  );
+}
+
+// Renders the board and the status
+function Board({ xIsNext, squares, onPlay, onRestart, onRevert }) {
+
   // This function is called when a square is clicked
   function handleClick(i) {
     // Ignore click if game is over or square is already filled
@@ -81,12 +92,15 @@ function Board({ xIsNext, squares, onPlay, onRestart }) {
     <>
       <div className="status">{status}</div>
       <Restart onRestart={onRestart} />
+      {onRevert && <Revert onRevert={onRevert} />}
       {renderBoard()}
     </>
   );
 }
 
+// Main component that Renders the game board and handles the game logic 
 export default function Game() {
+  // Initialize the history of plays, an array of arrays that contain the game state
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
   const xIsNext = (currentMove % 2) === 0;
@@ -103,6 +117,10 @@ export default function Game() {
 
   function jumpTo(nextMove) {
     setCurrentMove(nextMove);
+  }
+
+  function revert() {
+    setCurrentMove(currentMove - 1);
   }
 
   function restart() {
@@ -123,7 +141,12 @@ export default function Game() {
   return (
     <div className="game">
       <div className="game-board">
-        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} onRestart={restart} />
+        <Board 
+          xIsNext={xIsNext} 
+          squares={currentSquares} 
+          onPlay={handlePlay} 
+          onRestart={restart} 
+          onRevert={currentMove > 0 ? revert : null} />
       </div>
       <div className="game-info">
         <ol>{ moves }</ol>
