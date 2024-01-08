@@ -149,6 +149,7 @@ export default function Game() {
           onRevert={currentMove > 0 ? revert : null} />
       </div>
       <div className="game-info">
+        Play history:
         <ol>{ moves }</ol>
       </div>
     </div>
